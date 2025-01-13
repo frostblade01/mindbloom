@@ -1,0 +1,129 @@
+function checkVisible(elm) {
+  // https://stackoverflow.com/questions/5353934/check-if-element-is-visible-on-screen
+  var rect = elm.getBoundingClientRect();
+  var viewHeight = Math.max(
+    document.documentElement.clientHeight,
+    window.innerHeight
+  );
+  return !(rect.bottom < 0 || rect.top - viewHeight + 150 >= 0);
+}
+
+function startCounters() {
+  let firstCounter = document.querySelector(
+    "#main-3 > div.second > div:nth-child(1) > h1"
+  );
+  $({ countNum: 0 }).animate(
+    { countNum: 85 },
+    {
+      duration: 1000,
+      easing: "swing",
+      step: function () {
+        firstCounter.textContent = Math.ceil(this.countNum).toString() + "+";
+      },
+      complete: function () {
+        firstCounter.textContent = "85+";
+      },
+    }
+  );
+  window.setTimeout(function () {
+    firstCounter.textContent = "85+";
+  }, 1100);
+
+  let secondCounter = document.querySelector(
+    "#main-3 > div.second > div:nth-child(2) > h1"
+  );
+  $({ countNum: 0 }).animate(
+    { countNum: 3200 },
+    {
+      duration: 1000,
+      easing: "swing",
+      step: function () {
+        secondCounter.textContent = Math.ceil(this.countNum).toString() + "+";
+      },
+      complete: function () {
+        secondCounter.textContent = "3200+";
+      },
+    }
+  );
+  window.setTimeout(function () {
+    secondCounter.textContent = "3200+";
+  }, 1100);
+
+  let thirdCounter = document.querySelector(
+    "#main-3 > div.second > div:nth-child(3) > h1"
+  );
+  $({ countNum: 0 }).animate(
+    { countNum: 900000 },
+    {
+      duration: 1500,
+      easing: "swing",
+      step: function () {
+        thirdCounter.textContent = Math.ceil(this.countNum).toString() + "+";
+      },
+    }
+  );
+  window.setTimeout(function () {
+    thirdCounter.style.opacity = 0;
+    window.setTimeout(function () {
+      thirdCounter.textContent = "90 mil+";
+      thirdCounter.style.opacity = 1;
+    }, 1000);
+  }, 900);
+
+  let fourthCounter = document.querySelector(
+    "#main-3 > div.second > div:nth-child(4) > h1"
+  );
+  $({ countNum: 0 }).animate(
+    { countNum: 999999 },
+    {
+      duration: 2000,
+      easing: "swing",
+      step: function () {
+        fourthCounter.textContent = Math.ceil(this.countNum).toString() + "+";
+      },
+    }
+  );
+  window.setTimeout(function () {
+    fourthCounter.style.opacity = 0;
+    window.setTimeout(function () {
+      fourthCounter.textContent = "Infinite";
+      fourthCounter.style.opacity = 1;
+    }, 1000);
+  }, 1500);
+}
+
+// EVENT HANDLERS
+
+var countersStarted = false;
+
+function scrollAboutUs() {
+  // Scroll down arrow
+  if ($(this).scrollTop() > 300) {
+    $("#main-1 > .second").css({
+      opacity: "0",
+    });
+  } else {
+    $("#main-1 > .second").css({
+      opacity: "1",
+    });
+  }
+
+  // Counters
+  if (checkVisible($("#main-3 > div.second").get(0)) && !countersStarted) {
+    countersStarted = true;
+    startCounters();
+  }
+}
+
+$(document).ready(function () {
+  // Scroll interactions
+  scrollAboutUs();
+  $(window).scroll(scrollAboutUs);
+  $(window).resize(scrollAboutUs);
+
+  // Scroll down 3 arrow click
+  $("#main-1 > .second div").on("click", function () {
+    var body = $("html, body");
+    body.stop().animate({ scrollTop: $("#main-2").offset().top }, 750);
+  });
+});

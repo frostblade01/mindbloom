@@ -1,0 +1,274 @@
+function checkVisible(elm) {
+  // https://stackoverflow.com/questions/5353934/check-if-element-is-visible-on-screen
+  var rect = elm.getBoundingClientRect();
+  var viewHeight = Math.max(
+    document.documentElement.clientHeight,
+    window.innerHeight
+  );
+  return !(rect.bottom < 0 || rect.top - viewHeight + 150 >= 0);
+}
+
+// EVENT HANDLERS
+
+var displayDarkTheme = -1;
+
+function scrollHeader() {
+  // Fading elements
+  $(".fade-in-transform-scroll").each(function () {
+    if (checkVisible($(this).get(0))) {
+      $(this).css({
+        opacity: "1",
+        transform: "scale(1) translateY(0)",
+      });
+    }
+  });
+  $(".fade-in-scroll").each(function () {
+    if (checkVisible($(this).get(0))) {
+      $(this).css({
+        opacity: "1",
+      });
+    }
+  });
+
+  // Header
+  var currentDisplayedTheme = $(window).scrollTop() <= $("header").height() / 2;
+  if (displayDarkTheme == -1 || displayDarkTheme != currentDisplayedTheme) {
+    displayDarkTheme = currentDisplayedTheme;
+
+    // Header transparency
+    if ($(window).scrollTop() > $("header").height() / 2) {
+      $("header").addClass("sticky");
+    } else if (
+      !document
+        .getElementById("secondary-navigation")
+        .classList.contains("active") &&
+      !document.querySelector("header").classList.contains("always-sticky")
+    ) {
+      $("header").removeClass("sticky");
+    }
+
+    // Handle dark color changes
+    let primaryNavigationStyle = window.getComputedStyle(
+      document.getElementById("primary-navigation")
+    );
+    if (primaryNavigationStyle.getPropertyValue("display") == "block") {
+      $("#secondary-navigation").removeClass("active");
+      $("#secondary-navigation ul").css({
+        display: "none",
+        opacity: "0",
+      });
+    }
+
+    let staticeHeaderImage = document.querySelector(
+      "#header-logo-container > img"
+    );
+    let secondaryNavigationButton = document.querySelector(
+      "#secondary-navigation div img"
+    );
+    let bars = document.querySelector("#secondary-navigation div img");
+    let currentlyDarkTheme = staticeHeaderImage.src.includes("White");
+    if ($("header").get(0).classList.contains("dark-theme")) {
+      if (
+        currentlyDarkTheme &&
+        document
+          .getElementById("secondary-navigation")
+          .classList.contains("active")
+      ) {
+        staticeHeaderImage.src = "/images/staticeTextOnly.png";
+      } else if (
+        currentlyDarkTheme &&
+        $(window).scrollTop() > $("header").height() / 2
+      ) {
+        bars.src = "/images/bars.png";
+        staticeHeaderImage.src = "/images/staticeTextOnly.png";
+        secondaryNavigationButton.src = "/images/bars.png";
+        $("#primary-navigation li a").css({
+          color: "black",
+        });
+      } else if (
+        !currentlyDarkTheme &&
+        $(window).scrollTop() <= $("header").height() / 2 &&
+        !document
+          .getElementById("secondary-navigation")
+          .classList.contains("active")
+      ) {
+        bars.src = "/images/barsWhite.png";
+        staticeHeaderImage.src = "/images/staticeTextOnlyWhite.png";
+        secondaryNavigationButton.src = "/images/barsWhite.png";
+        $("#primary-navigation li a").css({
+          color: "white",
+        });
+      }
+    }
+  }
+}
+
+$(document).ready(function () {
+  // Scroll interactions
+  scrollHeader();
+  $(window).scroll(scrollHeader);
+  $(window).resize(scrollHeader);
+
+  // Fade in elements in header when site loads
+  $("header img").css({
+    // Keep as header img because the secondary navigation button leads to be loaded too
+    opacity: "1",
+  });
+  $("#primary-navigation li").each(function (i) {
+    $(this).css({
+      "transition-delay": (i * 100).toString() + "ms",
+      opacity: "1",
+    });
+  });
+  $(".fade-in").each(function () {
+    $(this).css({
+      opacity: "1",
+    });
+  });
+
+  // Statice image click
+  $("#header-logo-container > img").on("click", function () {
+    window.location = "/";
+  });
+
+  // Mobile dropdown menuContainer click
+  let lastClicked = 0;
+  let staticeHeaderImage = document.querySelector("header img");
+  let menuContainer = document.getElementById("secondary-navigation");
+  let menuButton = menuContainer.querySelector("img");
+  let header = $("header").get(0);
+  let menu = menuContainer.querySelector("ul");
+  $("#secondary-navigation img").on("click", function () {
+    if (new Date().getTime() - lastClicked > 1350) {
+      lastClicked = new Date().getTime();
+    } else {
+      return;
+    }
+    if (header.classList.contains("dark-theme")) {
+      if (
+        !document
+          .getElementById("secondary-navigation")
+          .classList.contains("active")
+      ) {
+        $("header img").attr("src", "/images/staticeTextOnly.png");
+        $("header ul li a").css({
+          color: "white",
+        });
+      } else if ($(window).scrollTop() <= $("header").height() / 2) {
+        $("header img").attr("src", "/images/staticeTextOnlyWhite.png");
+      }
+    }
+    if (menuContainer.classList.contains("active")) {
+      if ($(window).scrollTop() <= $("header").height() / 2) {
+        $("header").removeClass("sticky");
+      }
+      $("#secondary-navigation img").animate(
+        {
+          opacity: 0,
+        },
+        200,
+        function () {
+          if (
+            header.classList.contains("dark-theme") &&
+            $(window).scrollTop() <= $("header").height() / 2
+          ) {
+            $("#secondary-navigation img").attr("src", "/images/barsWhite.png");
+          } else {
+            $("#secondary-navigation img").attr("src", "/images/bars.png");
+          }
+          setTimeout(function () {
+            $("#secondary-navigation img").animate(
+              {
+                opacity: 1,
+              },
+              400
+            );
+          }, 400);
+        }
+      );
+      menu.style.opacity = 0;
+      menu.style.transform = "translate(-90px, 1px)";
+      $("#secondary-navigation ul li").each(function (i) {
+        $(this).css({
+          opacity: "0",
+        });
+      });
+      setTimeout(function () {
+        menu.style.display = "none";
+      }, 300);
+    } else {
+      if (!header.classList.contains("sticky")) {
+        $("header").addClass("sticky");
+      }
+      $("#secondary-navigation img").animate(
+        {
+          opacity: 0,
+        },
+        200,
+        function () {
+          $("#secondary-navigation img").attr("src", "/images/barsX.png");
+          setTimeout(function () {
+            $("#secondary-navigation img").animate(
+              {
+                opacity: 1,
+              },
+              400
+            );
+          }, 400);
+        }
+      );
+      menu.style.display = "block";
+      setTimeout(function () {
+        menu.style.opacity = 1;
+        menu.style.transform = "translate(-110px, 1px)";
+        $("#secondary-navigation ul li").each(function (i) {
+          $(this).css({
+            "transition-delay": (i * 100).toString() + "ms",
+            opacity: "1",
+          });
+        });
+      }, 200);
+    }
+    $("#secondary-navigation").toggleClass("active");
+  });
+
+  // Arrow buttons and links
+  $(".arrow-button").each(function () {
+    $(this).hover(
+      function () {
+        $("img.first", this).animate(
+          {
+            opacity: 0,
+          },
+          250
+        );
+        $("img.second", this).animate(
+          {
+            opacity: 1,
+          },
+          250
+        );
+        $("span.first", this).css({
+          "text-decoration-color": $("span.first", this).attr("ucolor"),
+        });
+      },
+      function () {
+        $("img.first", this).animate(
+          {
+            opacity: 1,
+          },
+          250
+        );
+        $("img.second", this).animate(
+          {
+            opacity: 0,
+          },
+          250
+        );
+        $("span.first", this).css({
+          "text-decoration-color": "transparent",
+        });
+      }
+    );
+  });
+});

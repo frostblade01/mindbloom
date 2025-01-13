@@ -1,0 +1,608 @@
+<!DOCTYPE html> 
+<html lang="en">
+
+<head>
+		<meta charset="utf-8">
+		<title>MindBloom</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		
+		<!-- Favicons -->
+		<link href="image8.png" rel="icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+		<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+		
+		<!-- Datetimepicker CSS -->
+		<link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css">
+		
+		<!-- Select2 CSS -->
+		<link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css">
+		
+		<!-- Fancybox CSS -->
+		<link rel="stylesheet" href="assets/plugins/fancybox/jquery.fancybox.min.css">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="assets/css/style.css">
+	
+	</head>
+	
+	  <!-- Navbar -->
+	 <!-- Navbar -->
+	
+	 <header>
+        <a class="logo" href="index.html">
+			<img src="image8.png" alt="logo" class="logo-img">
+            <span class="logo-text">MindBloom</span>
+        </a>
+        <nav>
+            <ul class="nav__links">
+                <li><a href="articles.html">Articles</a></li>
+                <li><a href="chatbot.html">Chatbot</a></li>
+                <li><a href="search.html">Appointment</a></li>
+            </ul>
+        </nav>
+        <a class="cta" href="about us.html">About Us</a>
+    </header>
+	<body>
+		
+
+		
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar">
+				<div class="container-fluid">
+					<div class="row align-items-center">
+						<div class="col-md-8 col-12">
+							<b><h>Search for Specealists</h></b>
+				
+						</div>
+						<div class="col-md-4 col-12 d-md-block d-none">
+							<div class="sort-by">
+								<span class="sort-title">Sort by</span>
+								<span class="sortby-fliter">
+									<select class="select">
+										<option>Select</option>
+										<option class="sorting">Rating</option>
+										<option class="sorting">Popular</option>
+										<option class="sorting">Latest</option>
+										<option class="sorting">Free</option>
+									</select>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+			
+			<!-- Page Content -->
+			<div class="content">
+				<div class="container-fluid">
+
+					<div class="row">
+						<div class="col-md-12 col-lg-4 col-xl-3 theiaStickySidebar">
+						
+							<!-- Search Filter -->
+<div class="card search-filter">
+    <div class="card-header">
+        <h4 class="card-title mb-0">Search Filter</h4>
+    </div>
+    <div class="card-body">
+        <div class="filter-widget">
+            <h4>Availability</h4>
+            <div>
+                <label class="custom_check">
+                    <input type="checkbox" name="availability" checked>
+                    <span class="checkmark"></span> Weekdays (Morning)
+                </label>
+            </div>
+            <div>
+                <label class="custom_check">
+                    <input type="checkbox" name="availability">
+                    <span class="checkmark"></span> Weekdays (Afternoon)
+                </label>
+            </div>
+            <div>
+                <label class="custom_check">
+                    <input type="checkbox" name="availability">
+                    <span class="checkmark"></span> Weekdays (Evening)
+                </label>
+            </div>
+            <div>
+                <label class="custom_check">
+                    <input type="checkbox" name="availability">
+                    <span class="checkmark"></span> Weekends
+                </label>
+            </div>
+        </div>
+
+        <div class="filter-widget">
+            <h4>Location</h4>
+            <div>
+                <label class="custom_check">
+                    <input type="checkbox" name="location" checked>
+                    <span class="checkmark"></span> In-Person
+                </label>
+            </div>
+            <div>
+                <label class="custom_check">
+                    <input type="checkbox" name="location">
+                    <span class="checkmark"></span> Online (Video)
+                </label>
+            </div>
+            <div>
+                <label class="custom_check">
+                    <input type="checkbox" name="location">
+                    <span class="checkmark"></span> Online (Phone)
+                </label>
+            </div>
+        </div>
+
+        <div class="filter-widget">
+            <h4>Therapist Type</h4>
+            <div>
+                <label class="custom_check">
+                    <input type="checkbox" name="therapist_type" checked>
+                    <span class="checkmark"></span> Psychologist
+                </label>
+            </div>
+            <div>
+                <label class="custom_check">
+                    <input type="checkbox" name="therapist_type">
+                    <span class="checkmark"></span> Counselor
+                </label>
+            </div>
+            <div>
+                <label class="custom_check">
+                    <input type="checkbox" name="therapist_type">
+                    <span class="checkmark"></span> Psychiatrist
+                </label>
+            </div>
+            <div>
+                <label class="custom_check">
+                    <input type="checkbox" name="therapist_type">
+                    <span class="checkmark"></span> Social Worker
+                </label>
+            </div>
+            <div>
+                <label class="custom_check">
+                    <input type="checkbox" name="therapist_type">
+                    <span class="checkmark"></span> Life Coach
+                </label>
+            </div>
+        </div>
+
+        <div class="filter-widget">
+            <h4>Gender</h4>
+            <div>
+                <label class="custom_check">
+                    <input type="checkbox" name="gender_type" checked>
+                    <span class="checkmark"></span> Male Doctor
+                </label>
+            </div>
+            <div>
+                <label class="custom_check">
+                    <input type="checkbox" name="gender_type">
+                    <span class="checkmark"></span> Female Doctor
+                </label>
+            </div>
+        </div>
+
+        <div class="btn-search">
+            <button type="button" class="btn btn-block">Search</button>
+        </div>	
+    </div>
+</div>
+<!-- /Search Filter -->
+
+							<!-- /Search Filter -->
+							
+						</div>
+						
+						<div class="col-md-12 col-lg-8 col-xl-9">
+
+							<!-- Doctor Widget -->
+							<div class="card">
+								<div class="card-body">
+									<div class="doctor-widget">
+										<div class="doc-info-left">
+											<div class="doctor-img">
+												<a href="doctor-profile.html">
+													<img src="dr1.jpg" class="img-fluid" alt="User Image">
+												</a>
+											</div>
+											<div class="doc-info-cont">
+												<h4 class="doc-name"><a href="#">Dr. Sarah Johnson</a></h4>
+												<p class="doc-speciality">Specialist in Cognitive Behavioral Therapy</p>
+												<h5 class="doc-department">Psychiatrist</h5>
+												<div class="rating">
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star"></i>
+													<span class="d-inline-block average-rating">(17)</span>
+												</div>
+												<div class="clinic-details">
+													<p class="doc-location"><i class="fas fa-map-marker-alt"></i>Dubai,UAE</p>
+													<ul class="clinic-gallery">
+														<li>
+															<a href="assets/img/features/feature-01.jpg" data-fancybox="gallery">
+																<img src="assets/img/features/feature-01.jpg" alt="Feature">
+															</a>
+														</li>
+														<li>
+															<a href="assets/img/features/feature-02.jpg" data-fancybox="gallery">
+																<img  src="assets/img/features/feature-02.jpg" alt="Feature">
+															</a>
+														</li>
+														<li>
+															<a href="assets/img/features/feature-03.jpg" data-fancybox="gallery">
+																<img src="assets/img/features/feature-03.jpg" alt="Feature">
+															</a>
+														</li>
+														<li>
+															<a href="assets/img/features/feature-04.jpg" data-fancybox="gallery">
+																<img src="assets/img/features/feature-04.jpg" alt="Feature">
+															</a>
+														</li>
+													</ul>
+												</div>
+												<div class="clinic-services">
+													<span>Depression</span>
+													<span>Anger Issues</span>
+												</div>
+											</div>
+										</div>
+										<div class="doc-info-right">
+											<div class="clini-infos">
+												<ul>
+													<li><i class="far fa-thumbs-up"></i> 98%</li>
+													<li><i class="far fa-comment"></i> 17 Feedback</li>
+													<li><i class="fas fa-map-marker-alt"></i> Deira, Dubai</li>
+													<li><i class="far fa-money-bill-alt"></i> 50-100 AED <i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum"></i> </li>
+												</ul>
+											</div>
+											<div class="clinic-booking">
+												<a class="view-pro-btn" href="doctor-profile.html">View Profile</a>
+												<a class="apt-btn" href="booking.html">Book Appointment</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /Doctor Widget -->
+
+							<!-- Doctor Widget -->
+							<div class="card">
+								<div class="card-body">
+									<div class="doctor-widget">
+										<div class="doc-info-left">
+											<div class="doctor-img">
+												<a href="doctor-profile.html">
+													<img src="dr2.jpg" class="img-fluid" alt="User Image">
+												</a>
+											</div>
+											<div class="doc-info-cont">
+												<h4 class="doc-name"><a href="doctor-profile.html">Dr. Michael Lee</a></h4>
+												<p class="doc-speciality">Expert in Personal Development, and Career Coaching
+
+												</p>
+												<h5 class="doc-department">Life Coach</h5>
+												<div class="rating">
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star"></i>
+													<span class="d-inline-block average-rating">(89)</span>
+												</div>
+												<div class="clinic-details">
+													<p class="doc-location"><i class="fas fa-map-marker-alt"></i> Dubai,UAE</p>
+													<ul class="clinic-gallery">
+														<li>
+															<a href="assets/img/features/feature-01.jpg" data-fancybox="gallery">
+																<img src="assets/img/features/feature-01.jpg" alt="Feature">
+															</a>
+														</li>
+														<li>
+															<a href="assets/img/features/feature-02.jpg" data-fancybox="gallery">
+																<img  src="assets/img/features/feature-02.jpg" alt="Feature">
+															</a>
+														</li>
+														<li>
+															<a href="assets/img/features/feature-03.jpg" data-fancybox="gallery">
+																<img src="assets/img/features/feature-03.jpg" alt="Feature">
+															</a>
+														</li>
+														<li>
+															<a href="assets/img/features/feature-04.jpg" data-fancybox="gallery">
+																<img src="assets/img/features/feature-04.jpg" alt="Feature">
+															</a>
+														</li>
+													</ul>
+												</div>
+												<div class="clinic-services">
+													<span>Career Coaching</span>
+													<span> Personal Development</span>
+												</div>
+											</div>
+										</div>
+										<div class="doc-info-right">
+											<div class="clini-infos">
+												<ul>
+													<li><i class="far fa-thumbs-up"></i> 100%</li>
+													<li><i class="far fa-comment"></i> 35 Feedback</li>
+													<li><i class="fas fa-map-marker-alt"></i> Nahda 2, Dubai </li>
+													<li><i class="far fa-money-bill-alt"></i> 60-200 <i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum"></i></li>
+												</ul>
+											</div>
+											<div class="clinic-booking">
+												<a class="view-pro-btn" href="doctor-profile.html">View Profile</a>
+												<a class="apt-btn" href="booking.html">Book Appointment</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /Doctor Widget -->
+
+							<!-- Doctor Widget -->
+							<div class="card">
+								<div class="card-body">
+									<div class="doctor-widget">
+										<div class="doc-info-left">
+											<div class="doctor-img">
+												<a href="doctor-profile.html">
+													<img src="dr3.jpg" class="img-fluid" alt="User Image">
+												</a>
+											</div>
+											<div class="doc-info-cont">
+												<h4 class="doc-name"><a href="doctor-profile.html">Dr. Emily Carter</a></h4>
+												<p class="doc-speciality">Specialist in Mindfulness and Emotional Resilience												</p>
+												<p class="doc-department">Psychologist</p>
+												<div class="rating">
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star"></i>
+													<span class="d-inline-block average-rating">(27)</span>
+												</div>
+												<div class="clinic-details">
+													<p class="doc-location"><i class="fas fa-map-marker-alt"></i> Sharjah, UAE</p>
+													<ul class="clinic-gallery">
+														<li>
+															<a href="assets/img/features/feature-01.jpg" data-fancybox="gallery">
+																<img src="assets/img/features/feature-01.jpg" alt="Feature">
+															</a>
+														</li>
+														<li>
+															<a href="assets/img/features/feature-02.jpg" data-fancybox="gallery">
+																<img  src="assets/img/features/feature-02.jpg" alt="Feature">
+															</a>
+														</li>
+														<li>
+															<a href="assets/img/features/feature-03.jpg" data-fancybox="gallery">
+																<img src="assets/img/features/feature-03.jpg" alt="Feature">
+															</a>
+														</li>
+														<li>
+															<a href="assets/img/features/feature-04.jpg" data-fancybox="gallery">
+																<img src="assets/img/features/feature-04.jpg" alt="Feature">
+															</a>
+														</li>
+													</ul>
+												</div>
+												<div class="clinic-services">
+													<span>Mindfulness</span>
+													<span> Emotional Intellegience</span>
+												</div>
+											</div>
+										</div>
+										<div class="doc-info-right">
+											<div class="clini-infos">
+												<ul>
+													<li><i class="far fa-thumbs-up"></i> 99%</li>
+													<li><i class="far fa-comment"></i> 35 Feedback</li>
+													<li><i class="fas fa-map-marker-alt"></i> Al Khan, Sharjah</li>
+													<li><i class="far fa-money-bill-alt"></i> $30-70 <i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum"></i></li>
+												</ul>
+											</div>
+											<div class="clinic-booking">
+												<a class="view-pro-btn" href="doctor-profile.html">View Profile</a>
+												<a class="apt-btn" href="booking.html">Book Appointment</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /Doctor Widget -->
+
+							<!-- Doctor Widget -->
+							<div class="card">
+								<div class="card-body">
+									<div class="doctor-widget">
+										<div class="doc-info-left">
+											<div class="doctor-img">
+												<a href="doctor-profile.html">
+													<img src="dr5.jpg" class="img-fluid" alt="User Image">
+												</a>
+											</div>
+											<div class="doc-info-cont">
+												<h4 class="doc-name"><a href="doctor-profile.html">Mr. Daksh Parnani</a></h4>
+												<p class="doc-speciality">Specialist in Stress Management and Life Balance</p>
+												<p class="doc-department">Counseller</p>
+												<div class="rating">
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star"></i>
+													<span class="d-inline-block average-rating">(4)</span>
+												</div>
+												<div class="clinic-details">
+													<p class="doc-location"><i class="fas fa-map-marker-alt"></i> Abu Dhabi, UAE</p>
+													<ul class="clinic-gallery">
+														<li>
+															<a href="assets/img/features/feature-01.jpg" data-fancybox="gallery">
+																<img src="assets/img/features/feature-01.jpg" alt="Feature">
+															</a>
+														</li>
+														<li>
+															<a href="assets/img/features/feature-02.jpg" data-fancybox="gallery">
+																<img  src="assets/img/features/feature-02.jpg" alt="Feature">
+															</a>
+														</li>
+														<li>
+															<a href="assets/img/features/feature-03.jpg" data-fancybox="gallery">
+																<img src="assets/img/features/feature-03.jpg" alt="Feature">
+															</a>
+														</li>
+														<li>
+															<a href="assets/img/features/feature-04.jpg" data-fancybox="gallery">
+																<img src="assets/img/features/feature-04.jpg" alt="Feature">
+															</a>
+														</li>
+													</ul>
+												</div>
+												<div class="clinic-services">
+													<span>Stress Management</span>
+													<span> Life Balance</span>
+												</div>
+											</div>
+										</div>
+										<div class="doc-info-right">
+											<div class="clini-infos">
+												<ul>
+													<li><i class="far fa-thumbs-up"></i> 97%</li>
+													<li><i class="far fa-comment"></i> 4 Feedback</li>
+													<li><i class="fas fa-map-marker-alt"></i> Masdar City, Abu Dhabi</li>
+													<li><i class="far fa-money-bill-alt"></i> 100-200 <i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum"></i></li>
+												</ul>
+											</div>
+											<div class="clinic-booking">
+												<a class="view-pro-btn" href="doctor-profile.html">View Profile</a>
+												<a class="apt-btn" href="booking.html">Book Appointment</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /Doctor Widget -->
+
+							<!-- Doctor Widget -->
+							<div class="card">
+								<div class="card-body">
+									<div class="doctor-widget">
+										<div class="doc-info-left">
+											<div class="doctor-img">
+												<a href="doctor-profile.html">
+													<img src="dr4.jpg" class="img-fluid" alt="User Image">
+												</a>
+											</div>
+											<div class="doc-info-cont">
+												<h4 class="doc-name"><a href="doctor-profile.html">Dr. Thomson Junior</a></h4>
+												<p class="doc-speciality">Specialist in Crisis Intervention and Support for Students Facing Social Isolation
+												</p>
+												<p class="doc-department">Social Worker</p>
+												<div class="rating">
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star"></i>
+													<span class="d-inline-block average-rating">(52)</span>
+												</div>
+												<div class="clinic-details">
+													<p class="doc-location"><i class="fas fa-map-marker-alt"></i> Dubai,UAE</p>
+													<ul class="clinic-gallery">
+														<li>
+															<a href="assets/img/features/feature-01.jpg" data-fancybox="gallery">
+																<img src="assets/img/features/feature-01.jpg" alt="Feature">
+															</a>
+														</li>
+														<li>
+															<a href="assets/img/features/feature-02.jpg" data-fancybox="gallery">
+																<img  src="assets/img/features/feature-02.jpg" alt="Feature">
+															</a>
+														</li>
+														<li>
+															<a href="assets/img/features/feature-03.jpg" data-fancybox="gallery">
+																<img src="assets/img/features/feature-03.jpg" alt="Feature">
+															</a>
+														</li>
+														<li>
+															<a href="assets/img/features/feature-04.jpg" data-fancybox="gallery">
+																<img src="assets/img/features/feature-04.jpg" alt="Feature">
+															</a>
+														</li>
+													</ul>
+												</div>
+												<div class="clinic-services">
+													<span>Bullying</span>
+													<span> Personal Challenges</span>
+												</div>
+											</div>
+										</div>
+										<div class="doc-info-right">
+											<div class="clini-infos">
+												<ul>
+													<li><i class="far fa-thumbs-up"></i> 100%</li>
+													<li><i class="far fa-comment"></i> 52 Feedback</li>
+													<li><i class="fas fa-map-marker-alt"></i> Burjuman, Dubai</li>
+													<li><i class="far fa-money-bill-alt"></i> 50-100<i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum"></i></li>
+												</ul>
+											</div>
+											<div class="clinic-booking">
+												<a class="view-pro-btn" href="doctor-profile.html">View Profile</a>
+												<a class="apt-btn" href="booking.html">Book Appointment</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /Doctor Widget -->
+
+							<div class="load-more text-center">
+								<a class="btn btn-primary btn-sm" href="javascript:void(0);">Load More</a>	
+							</div>	
+						</div>
+					</div>
+
+				</div>
+
+			</div>		
+			<!-- /Page Content -->
+   
+			
+    <!-- Footer -->
+    <footer>
+        <div class="footerContainer">
+            <div class="socialIcons">
+                <a href=""><img src="icons/2.png" alt="Facebook"></a>
+                <a href=""><img src="icons/3.png" alt="Twitter"></a>
+                <a href=""><img src="icons/1.png" alt="Instagram"></a>
+                <a href=""><img src="icons/4.webp" alt="LinkedIn"></a>
+                <a href=""><img src="icons/5.png" alt="GitHub"></a>
+            </div>
+            <div class="footerNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="articles.html">Articles</a></li>
+                    <li><a href="chatbot.html">Mindler</a></li>
+                    <li><a href="search.html">Appointment</a></li>
+                    <li><a href="about us.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footerBottom">
+            <p>Copyright &copy;2025; Designed by MindBloom</p>
+        </div>
+    </footer>
+</body>
+
+</html>
